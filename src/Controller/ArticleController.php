@@ -8,9 +8,10 @@ use App\Form\ArticleType;
 use App\Repository\ArticleRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\File;
+use Symfony\Component\Routing\Annotation\Route;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 class ArticleController extends AbstractController
 {
@@ -23,8 +24,9 @@ class ArticleController extends AbstractController
     #[Route('/article', name: 'articles')]
     public function index(): Response
     {
+        dump($this->getUser());
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
-        dump($articles);
+        // dump($articles);
         // $articles = $this->getDoctrine()->getRepository(Article::class)->findMonArticle();
         return $this->render('article/index.html.twig', [
             'articles' => $articles
@@ -34,8 +36,10 @@ class ArticleController extends AbstractController
     /**
      * Undocumented function
      * @Route("/article/save", name="saveArticle")
+     * @IsGranted("ROLE_ADMIN")
      */
-    public function saveArticle (Request $request, /* EntityManagerInterface $manager */) {
+    public function saveArticle (Request $request, /* EntityManagerInterface $manager */) 
+    {
         $article = new Article();
         $form = $this->createForm(ArticleType::class, $article);
         $form->handleRequest($request);

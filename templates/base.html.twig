@@ -23,6 +23,11 @@
                 <a href={{path('index')}}>Accueil</a>
                 <a href={{path('articles')}}>Articles</a>
                 <a href={{path('saveArticle')}}>Ajouter</a>
+				{% if is_granted("ROLE_USER") %}
+                	<a href={{path('app_logout')}}>Déconnexion</a>
+				{% else %}
+                	<a href={{path('app_login')}}>Se connecter</a>
+				{% endif %}
             </nav>
 		</header>
 		{% block body %}{% endblock %}

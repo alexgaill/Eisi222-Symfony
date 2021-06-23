@@ -10,5 +10,9 @@
     {% endfor %}
 </div>
 <h1>{{article.title}}</h1>
+{% if article.image is not empty %}
 <img src={{asset('img/upload/'~ article.image)}} alt="">
+{% else %}
+<img src="https://fakeimg.pl/250x250" alt="">
+{% endif %}
 {% endblock %}
