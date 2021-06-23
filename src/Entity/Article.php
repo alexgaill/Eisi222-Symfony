@@ -8,6 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass=ArticleRepository::class)
+ * @ORM\HasLifecycleCallbacks()
  */
 class Article
 {
@@ -151,5 +152,16 @@ class Article
         $this->image = $image;
 
         return $this;
+    }
+
+    /**
+     * @ORM\PostRemove
+     */
+    public function deleteImage()
+    {
+        if (file_exists(__DIR__.'/../../public/img/upload/'.$this->image)) {
+            unlink(__DIR__.'/../../public/img/upload/'.$this->image);
+        }
+        return true;
     }
 }
