@@ -1,5 +1,14 @@
 {% extends "base.html.twig" %}
 
 {% block body %}
+<div class="message">
+    {{dump(app.flashes)}}
+    {% for type, messages in app.flashes %}
+        {% for message in messages %}
+            <p class="text-{{type}}">{{message}}</p>
+        {% endfor %}
+    {% endfor %}
+</div>
 <h1>{{article.title}}</h1>
+<img src={{asset('img/upload/'~ article.image)}} alt="">
 {% endblock %}

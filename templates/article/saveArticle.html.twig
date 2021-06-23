@@ -1,7 +1,12 @@
 {% extends "base.html.twig" %}
 {% block body %}
 	{{form_start(form)}}
-        {{form_row(form.title)}}
+        <div>
+        {{form_label(form.title)}}
+        {{form_widget(form.title)}}
+        {{form_errors(form.title)}}
+        </div>
         {{form_row(form.description, {'attr': {'placeholder': 'Ajoutez un contenu à votre article'}})}}
+        {# <button type="submit">Envoyer</button> #}
 	{{form_end(form)}}
 {% endblock %}

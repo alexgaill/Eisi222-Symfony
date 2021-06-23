@@ -9,7 +9,7 @@ class TestController extends AbstractController {
 
     /**
      * Undocumented function
-     * @Route("/", name="index") 
+     * @Route("/", name="index", methods={"GET"}) 
      * @return void
      */
     public function hello ()
@@ -26,7 +26,8 @@ class TestController extends AbstractController {
     {
         $info = 'Alexandre';
         return $this->render("coucou.html.twig", [
-            "prenom" => $info
+            "prenom" => $info,
+            "test" => "toto"
         ]);
     }
 }

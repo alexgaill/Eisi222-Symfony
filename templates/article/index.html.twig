@@ -13,7 +13,7 @@
 {% endif %} #}
 <ul>
         {% for article in articles %}
-            <li>{{article.title}}</li>
+            <li><a href={{path('article', {'id': article.id})}}>{{article.upperTitle}}</a> | categorie: {{article.categorie.name}}</li>
         {% else %}
             <li>Pas d'articles de disponible</li>
         {% endfor %}
