@@ -30,7 +30,11 @@
 				{% endif %}
             </nav>
 		</header>
+		<main>
+		{% set name = "John" %}
+		<h1>{% trans with {'%name%': 'Fabien'}%} Bonjour %name% {% endtrans %}</h1>
 		{% block body %}{% endblock %}
+		</main>
 		<footer>
 			<p>Site créé lors du cours de Symfony</p>
 		</footer>
