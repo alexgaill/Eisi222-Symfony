@@ -31,8 +31,13 @@
             </nav>
 		</header>
 		<main>
-		{% set name = "John" %}
-		<h1>{% trans with {'%name%': 'Fabien'}%} Bonjour %name% {% endtrans %}</h1>
+		{# {% set name = "John" %}
+		<h1>{% trans with {'%name%': 'Fabien'} %} Bonjour %name% {% endtrans %}</h1> #}
+		{# {% trans %}
+			<h3>foo</h3>
+		{% endtrans %}
+		{{ '<h3>foo</h3>'|trans|raw }} #}
+
 		{% block body %}{% endblock %}
 		</main>
 		<footer>

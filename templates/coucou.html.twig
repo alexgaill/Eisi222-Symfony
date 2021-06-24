@@ -2,4 +2,7 @@
 
 {% block body %}
 <h1>Coucou {{ prenom }}!</h1>
+{% for item in basket %}
+    <p>{{item}}</p>
+{% endfor %}
 {% endblock %}
